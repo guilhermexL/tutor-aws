@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Serviço 1: Ollama Server (para o LLM)
+  ollama_service:
+    image: ollama/ollama:latest
+    container_name: ollama_llm_server
+    ports:
+      - "11434:11434" # Mapeia a porta Ollama para o host (útil para testes ou baixar modelos manualmente)
+    volumes:
+      - ./.ollama_models:/root/.ollama # Persiste os modelos no host
+    # Comando para iniciar o Ollama e baixar o modelo
+    command: >
+      bash -c "
+        ollama serve &
+        sleep 5 && # Espera um pouco para o servidor iniciar
+        ollama pull llama3.1:8b
+      "
+  # Serviço 2: Aplicação Streamlit
+  streamlit_app:
+    build:
+      context: . # O contexto é o diretório raiz do projeto
+      dockerfile: docker/Dockerfile # Aponta para o Dockerfile dentro da pasta 'docker'
+    container_name: tutor_aws_streamlit
+    ports:
+      - "8501:8501" # Mapeia a porta 8501 do contêiner para a porta 8501 do seu host
+    depends_on:
+      - ollama_service # Garante que o Ollama tente iniciar antes do Streamlit
+    environment:
+      OLLAMA_BASE_URL: "http://ollama_service:11434" # Variável de ambiente para o Streamlit se conectar ao Ollama
+    volumes:
+      - ./:/app
+
+# Definição dos Volumes para persistência de dados
+volumes:
+  .ollama_models: # Volume para os modelos Ollama
+  # db_data: # Descomentar e configurar quando for adicionar o banco de dados
