@@ -1,5 +1,3 @@
-# seu_projeto/app.py
-
 import streamlit as st
 from langchain_ollama import OllamaLLM # Importação correta e atualizada para Ollama
 from langchain.prompts import PromptTemplate
@@ -96,14 +94,4 @@ if st.button("Obter Resposta do Tutor", type="primary"):
         record_metric("Input_Warning", "Usuário tentou enviar pergunta vazia.")
 
 st.markdown("---")
-st.caption("2025 Todos os direitos reservados.")
-
-st.sidebar.header("Guia Rápido")
-st.sidebar.info(
-    "1. **Faça sua Pergunta:** Digite sua dúvida sobre AWS no campo de texto principal.\n\n"
-    "2. **Obtenha a Resposta:** Clique no botão 'Obter Resposta do Tutor' para ver a LLM em ação."
-)
-st.sidebar.markdown(f"URL de conexão Ollama: `{OLLAMA_BASE_URL}`")
-st.sidebar.markdown(f"Configuração do DB (futuro): Host=`{DB_HOST}`, DB=`{DB_NAME}`") # Mantenha para visibilidade
-st.sidebar.markdown("[Saiba mais sobre Streamlit](https://streamlit.io/)")
-st.sidebar.markdown("[Saiba mais sobre Ollama](https://ollama.com/)")
+st.caption("© 2025 Todos os [Direitos reservados.](https://github.com/guilhermexL/tutor-aws/blob/main/assets/LICENSE)")
