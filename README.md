@@ -20,7 +20,6 @@ Desenvolver um **tutor virtual inteligente** que:
 * **Python 3+**
 * **Streamlit** – interface web leve e intuitiva
 * **OllamaLLM** – geração de respostas com IA
-* **dotenv** – gerenciamento de variáveis sensíveis
 * **Docker** – empacotamento e portabilidade da aplicação
 * **Draw.io** - infraestrutura da plataforma
 
@@ -32,7 +31,7 @@ Desenvolver um **tutor virtual inteligente** que:
 
 ```bash
 git clone https://github.com/guilhermexL/tutor-aws.git
-cd tutor-aws-cloud
+cd tutor-aws
 ```
 
 ### 2. Ambiente virtual (opcional, mas recomendado)
@@ -49,15 +48,7 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
-### 4. Configure as variáveis de ambiente
-
-Crie um arquivo `.env` com sua chave da OpenAI:
-
-```
-OPENAI_API_KEY=sua-chave-openai
-```
-
-### 5. Rode a aplicação
+### 4. Rode a aplicação
 
 ```bash
 streamlit run app.py
@@ -89,7 +80,6 @@ Acesse a aplicação em: [http://localhost:8501](http://localhost:8501)
 * [ ] Adicionar histórico de sessão do usuário.
 * [ ] Criar visualização de desempenho e progresso.
 * [ ] Adicionar gamificação (pontos, medalhas, etc).
-* [ ] Suporte a múltiplos idiomas (PT-BR / EN-US).
 * [ ] Hospedagem em nuvem (opcional para demo final).
 
 ---
