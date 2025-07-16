@@ -19,7 +19,7 @@ Desenvolver um **tutor virtual inteligente** que:
 
 * **Python 3+**
 * **Streamlit** – interface web leve e intuitiva
-* **OpenAI API** – geração de respostas com IA
+* **OllamaLLM** – geração de respostas com IA
 * **dotenv** – gerenciamento de variáveis sensíveis
 * **Docker** – empacotamento e portabilidade da aplicação
 * **Draw.io** - infraestrutura da plataforma
