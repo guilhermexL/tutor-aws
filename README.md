@@ -18,9 +18,9 @@ Desenvolver um **tutor virtual inteligente** que:
 ## Tecnologias Utilizadas
 
 * **Python 3+**
-* **Streamlit** – interface web leve e intuitiva
-* **OllamaLLM** – geração de respostas com IA
-* **Docker** – empacotamento e portabilidade da aplicação
+* **Streamlit** – Interface web leve e intuitiva (Ainda em revisão)
+* **LLM** – OpenRouter API (mistralai/mistral-7b-instruct)
+* **EC2 Free Tier** – Hospedagem da aplicação
 * **Draw.io** - infraestrutura da plataforma
 
 ---
