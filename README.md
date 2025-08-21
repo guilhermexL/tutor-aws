@@ -1,98 +1,98 @@
-# Tutor Virtual Inteligente para Certificação AWS Cloud Practitioner
+<div align="center">
+  <img src="./assets/logo.png">
+</div>
 
-Um assistente virtual inteligente, com foco em auxiliar estudantes na preparação para o exame **AWS Cloud Practitioner (CLF-C02)**. O projeto foi desenvolvido como um protótipo funcional para demonstração, com potencial de expansão para aplicações educacionais reais.
+# Visão Geral
 
----
-
-## Objetivo
-
-Desenvolver um **tutor virtual inteligente** que:
-
-* Explique conceitos da AWS de forma clara e interativa.
-* Simule questões da prova com feedback em tempo real.
-* Acompanhe o progresso do usuário durante a sessão.
-* Sugira materiais e links oficiais de estudo com base nas respostas.
-
----
+Este é um projeto de um aplicativo de chat interativo que permite aos usuários conversar com um "Tutor" alimentado por um modelo de linguagem grande (LLM) rodando por container via Ollama. O projeto é dividido em duas partes principais: um backend em Python (FastAPI) que serve como uma API para interagir com o Ollama, e um frontend em Next.js (React/TypeScript) que fornece a interface de usuário.
 
 ## Tecnologias Utilizadas
 
-* **Python 3+**
-* **Streamlit** – Interface web leve e intuitiva (Ainda em revisão)
-* **LLM** – OpenRouter API (mistralai/mistral-7b-instruct)
-* **EC2 Free Tier** – Hospedagem da aplicação
-* **Draw.io** - infraestrutura da plataforma
+Este projeto utiliza uma pilha de tecnologias moderna e eficiente:
 
----
+### Backend
+* **Python:** Linguagem de programação principal.
+* **FastAPI:** Um framework web de alta performance para construir APIs assíncronas em Python.
+* **Httpx:** Cliente HTTP assíncrono utilizado para fazer requisições ao serviço Ollama.
+* **Pydantic:** Biblioteca para validação de dados e configurações, garantindo a integridade dos payloads da API.
+* **Uvicorn (Implícito):** Servidor ASGI que executa a aplicação FastAPI.
+* **Ollama:** Um framework para rodar e gerenciar modelos de linguagem grandes (LLMs) localmente.
+* **Mistral:instruct:** O modelo de linguagem específico utilizado via Ollama para as interações do chat.
 
-## Como Rodar Localmente
+### Frontend
+* **TypeScript:** Superset do JavaScript que adiciona tipagem estática, melhorando a robustez e manutenibilidade do código.
+* **React:** Biblioteca JavaScript para construção de interfaces de usuário dinâmicas e reativas.
+* **Next.js:** Framework React que oferece recursos como Server-Side Rendering (SSR), Static Site Generation (SSG) e um sistema de roteamento intuitivo, além da diretiva `use client` para componentes interativos.
+* **Lucide React:** Uma biblioteca de ícones leves e personalizáveis, usados para enriquecer a interface do usuário.
+* **Tailwind CSS (Implícito):** Framework CSS utility-first para estilização rápida e responsiva dos componentes da UI.
 
-### 1. Clonando o repositório
+### Orquestração
+* **Docker & Docker Compose:** Utilizados para empacotar, orquestrar e isolar os serviços do backend (FastAPI) e do LLM (Ollama), garantindo um ambiente de desenvolvimento e produção consistente e fácil de configurar.
+
+### Demonstração
+
+<div align="center">
+  <img src="./assets/demonstracao.gif">
+</div>
+
+## Funcionalidades
+
+* **Chat Interativo:** Permite aos usuários enviar perguntas e receber respostas do Tutor AI.
+* **Status da API:** Exibe o status de conexão com a API do backend (online/offline/verificando).
+* **Indicação de Carregamento:** Mostra um indicador visual enquanto o Tutor AI está processando a resposta.
+* **Limpar Chat:** Opção para resetar a conversa.
+* **Mensagens de Erro:** Trata e exibe mensagens de erro amigáveis em caso de falha na comunicação com a API ou Ollama.
+
+## Como Configurar e Executar o Projeto
+
+Siga os passos abaixo para colocar o projeto em funcionamento na sua máquina local.
+
+### Pré-requisitos
+
+* [Docker](https://www.docker.com/get-started/) (com Docker Compose incluído)
+* [Node.js](https://nodejs.org/en/download/) (com npm ou yarn) para o frontend
+
+### 1. Clonar o Repositório
 
 ```bash
 git clone https://github.com/guilhermexL/tutor-aws.git
 cd tutor-aws
 ```
 
-### 2. Ambiente virtual (opcional, mas recomendado)
+### 2\. Configuração do Backend e Ollama (Docker Compose)
+
+Vá no terminal na pasta raiz do projeto onde está o arquivo `docker-compose.yml` pronto, construa e inicie os serviços:
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-venv\Scripts\activate     # Windows
+docker-compose up --build -d
 ```
 
-### 3. Instale as dependências
+  * `--build`: Garante que as imagens dos seus serviços sejam construídas (ou reconstruídas) se houver mudanças no Dockerfile.
+  * `-d`: Executa os contêineres em segundo plano (detached mode).
+
+Você pode verificar o status dos serviços com:
 
 ```bash
-pip install -r requirements.txt
+docker-compose ps
 ```
 
-### 4. Rode a aplicação
+### 3\. Configuração e Execução do Frontend (Next.js)
+
+Assumindo que seus arquivos do frontend (como `page.tsx`) estão na raiz do seu projeto Next.js:
 
 ```bash
-streamlit run app.py
+# Navegue para a pasta raiz do seu projeto frontend (se for separada)
+# cd frontend-app 
+
+# Instale as dependências
+npm install # ou yarn install
+
+# Execute o servidor de desenvolvimento
+npm run dev # ou yarn dev
 ```
 
----
-
-## Rodando com Docker
-
-### Build da imagem
-
-```bash
-docker build -t tutor-aws .
-```
-
-### Execute o container
-
-```bash
-docker run -p 8501:8501 --env-file .env tutor-aws
-```
-
-Acesse a aplicação em: [http://localhost:8501](http://localhost:8501)
-
----
-
-## Roadmap (Próximos Passos)
-
-* [ ] Melhorar a curadoria de conteúdos e explicações.
-* [ ] Adicionar histórico de sessão do usuário.
-* [ ] Criar visualização de desempenho e progresso.
-* [ ] Adicionar gamificação (pontos, medalhas, etc).
-* [ ] Hospedagem em nuvem (opcional para demo final).
-
----
+O frontend estará acessível em `http://localhost:3000`.
 
 ## Licença
 
-Este projeto está sob a licença **MIT**. Veja o arquivo [LICENSE](./assets/LICENSE) para mais detalhes.
-
----
-
-## Contribuintes
-
-* [Danilo Dias](https://www.linkedin.com/in/danilo-dias-biodev/)
-* [Guilherme Santos](https://www.linkedin.com/in/guilhermee-santos)
-* [José Alan](https://www.linkedin.com/in/alan-pires-engenharia/)
-* [Ludy Mila Guimarães](https://www.linkedin.com/in/ludymilaguimar%C3%A3es13/)
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [`LICENSE`](./assets/LICENSE) para mais detalhes.
