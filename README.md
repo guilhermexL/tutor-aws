@@ -93,6 +93,10 @@ npm run dev # ou yarn dev
 
 O frontend estará acessível em `http://localhost:3000`.
 
+### 4. Defesa de Projeto
+
+Veja nossa documentaçao de defesa do tutor inteligente [aqui](./resources/pitch-final/Relatório%20Final%20-%20Projeto%20EdN.pdf)
+
 ## Licença
 
 Este projeto está licenciado sob a licença MIT. Veja o arquivo [`LICENSE`](./assets/LICENSE) para mais detalhes.
