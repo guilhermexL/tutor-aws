@@ -81,8 +81,8 @@ docker-compose ps
 Assumindo que seus arquivos do frontend (como `page.tsx`) estão na raiz do seu projeto Next.js:
 
 ```bash
-# Navegue para a pasta raiz do seu projeto frontend (se for separada)
-# cd frontend-app 
+# Navegue para a pasta raiz do frontend
+cd frontend-app 
 
 # Instale as dependências
 npm install # ou yarn install
